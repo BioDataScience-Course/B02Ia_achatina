@@ -44,7 +44,7 @@ chart(data = achatina, radius ~ coils %col=% shell) +
 
 # Objectif
 
-Utilisez les différentes notions que vous avez apprises sur la régression linaire dans les modules 1 et 2 de votre cours pour modéliser la croissance de la coquille de ces mollusques gastéropodes. N'hésitez pas à diviser votre analyse en 2 parties si nécessaire (protoconch *versus* teleoconch).
+Utilisez les différentes notions que vous avez apprises sur la régression linaire dans les modules 1 et 2 de votre cours pour modéliser la croissance de la coquille de ces mollusques gastéropodes. N'hésitez pas à diviser votre analyse en 2 parties si nécessaire (`protoconch` *versus* `teleoconch`).
 
 Ceci est un projet **individuel**, **court** et **libre** qui doit être **terminé pour la fin du module 2**. 
 
@@ -60,6 +60,6 @@ Structurez votre document `docs/achatina.Rmd` comme un rapport scientifique avec
 
 # Note
 
-Les données de ce projet ont été employées dans le cadre d'une publication de Van Osselaer et Grosjean [-@VanOsselaer2000]. Elle est disponible dans le dossier `bibliography`. Elle vous permettra de compléter les sections introduction et matériel et méthodes gra^ce aux informations qui s'y trouvent.
+Les données de ce projet ont été employées dans le cadre d'une publication de Van Osselaer et Grosjean [-@VanOsselaer2000]. Elle est disponible dans le dossier `bibliography`. Elle vous permettra de compléter les sections introduction et matériel et méthodes grâce aux informations qui s'y trouvent.
 
 # Références {-}
