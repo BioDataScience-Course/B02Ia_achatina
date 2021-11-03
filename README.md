@@ -60,7 +60,7 @@ anomalies qui empêchent cette compilation n’est pas recevable !
 
 Les données de ce projet ont été employées dans le cadre d’une
 publication de Van Osselaer et Grosjean (2000). Elle est disponible dans
-le dossier `bibliography`. Elle vous permettra de compléter les sections
+le dossier `biblio`. Elle vous permettra de compléter les sections
 introduction et matériel et méthodes grâce aux informations qui s’y
 trouvent.
 

@@ -1,6 +1,6 @@
 ---
 title: "Croissance de la coquille d'escargots géants d'Afrique - analyse libre"
-bibliography: "bibliography/biblio.bib"
+bibliography: "biblio/biblio.bib"
 output: github_document
 ---
 
@@ -60,6 +60,6 @@ Structurez votre document `docs/achatina.Rmd` comme un rapport scientifique avec
 
 # Note
 
-Les données de ce projet ont été employées dans le cadre d'une publication de Van Osselaer et Grosjean [-@VanOsselaer2000]. Elle est disponible dans le dossier `bibliography`. Elle vous permettra de compléter les sections introduction et matériel et méthodes grâce aux informations qui s'y trouvent.
+Les données de ce projet ont été employées dans le cadre d'une publication de Van Osselaer et Grosjean [-@VanOsselaer2000]. Elle est disponible dans le dossier `biblio`. Elle vous permettra de compléter les sections introduction et matériel et méthodes grâce aux informations qui s'y trouvent.
 
 # Références {-}
