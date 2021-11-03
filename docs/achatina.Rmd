@@ -1,0 +1,39 @@
+---
+title: "Croissance de la coquille de l'escargots géant d'Afrique"
+author: "___"
+date: "___"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R
+```
+
+```{r import, echo=FALSE, message=FALSE, results='hide'}
+read("___") %>.%
+  mutate(., shell = as.factor(shell)) %>.%
+  labelise(.,
+    label = list(
+      coils = "Nombre de tours",
+      radius = "Rayon de la suture",
+      shell  = "Type de coquille"),
+    units = list(
+      radius = "mm"
+  )) -> achatina
+```
+
+## Introduction
+
+
+## But
+
+
+## Matériel et méthodes
+
+
+## Résultats
+
+
+## Discussion et conclusions
+
