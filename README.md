@@ -62,7 +62,9 @@ Les données de ce projet ont été employées dans le cadre d’une
 publication de Van Osselaer et Grosjean (2000). Elle est disponible dans
 le dossier `biblio`. Elle vous permettra de compléter les sections
 introduction et matériel et méthodes grâce aux informations qui s’y
-trouvent.
+trouvent. *Vous pouvez vous inspirer des balises utilisées dans
+`README.Rmd` pour vos références bibliographiques dans
+`docs/achatina.Rmd`.*
 
 # Références
 
