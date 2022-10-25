@@ -1,0 +1,129 @@
+---
+title: "Modélisation de la croissance de la coquille de l'escargot géant d'Afrique"
+author: "___"
+date: "___"
+bibliography: "../biblio/biblio.bib"
+output: html_document
+---
+
+<!--# Ceci est un commentaire. -->
+
+<!--% Ceci est une consigne. Ne jamais modifier ni déplacer les consignes dans le document ! -->
+
+<!--% Ajoutez la date et votre nom dans l'entête YAML.-->
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+SciViews::R("model", lang = "fr")
+```
+
+# Introduction
+
+<!--% Rédigez l'introduction en 3 à 4 phrases en vous aidant de l'article proposé dans le dossier `biblio/`. -->
+
+[@VanOsselaer2000]
+
+@VanOsselaer2000
+
+<!--# Deux citations ont été ajoutées ci-dessus afin de citer correctement vos sources. -->
+
+# But
+
+<!--% Rédigez le but de ce carnet de notes en 1 à 2 phrases en vous aidant des consignes présentées dans le `README.md`.-->
+
+# Analyses
+
+```{r import, echo=FALSE, message=FALSE, results='hide'}
+read("../data/achatina.csv") %>.%
+  smutate(., shell = as.factor(shell)) %>.%
+  labelise(.,
+    label = list(
+      coils = "Nombre de tours",
+      radius = "Rayon de la suture",
+      shell  = "Type de coquille"),
+    units = list(
+      radius = "mm"
+  )) -> achatina
+```
+
+## Description des données
+
+<!--% Réalisez un nuage de points de la variable `radius` en fonction de la variable `coils`. -->
+
+```{r plot}
+
+```
+
+<!--% Décrivez le graphique ci-dessus en 2 à 3 phrases.-->
+
+## Modélisation via la régression linéaire simple
+
+<!--% Utilisez la fonction `lm()` pour calculer la régression linéaire demandée. Placez le résultat dans une variable `abalone_lm`. Superposez la droite de régression sur le nuage de point dans un graphique. -->
+
+```{r lin}
+
+```
+
+<!--% Faites un résumé de votre modèle avec la fonction `summary()` appliquée sur votre objet `achatina_lm`.-->
+
+```{r lin_summary}
+
+```
+
+<!--% Décrivez le résultat du résumé de l'objet `achatina_lm` en 3 à 4 phrases. Soyez complet ! -->
+
+<!--% Écrivez l'équation mathématique de ce modèle (paramétrisation du modèle) en utilisant la syntaxe LaTeX ci-dessous. -->
+
+$$___equation___$$
+
+<!--% Faites un graphique composite des résidus de votre modèle `achatina_lm`.-->
+
+```{r lin_resid}
+
+```
+
+<!--% Décrivez chaque graphique de ce graphique composite ci-dessus en 2 à 3 phrases. Soyez complet ! -->
+
+## Modélisation via la régression polynomiale
+
+<!--% Utilisez la fonction `lm()` pour calculer une régression polynomiale. Placez le résultat dans une variable `achatina_poly`. Superposez la droite de régression sur le nuage de point dans un graphique. -->
+
+```{r poly}
+
+```
+
+<!--% Faites un résumé de votre modèle avec la fonction `summary()` appliquée sur votre objet `achatina_poly`.-->
+
+```{r poly_summary}
+
+```
+
+<!--% Décrivez le résultat du résumé de l'objet `achatina_poly` en 3 à 4 phrases. Soyez complet ! -->
+
+<!--% Écrivez l'équation mathématique de ce modèle (paramétrisation du modèle) en utilisant la syntaxe LaTeX ci-dessous. -->
+
+$$___equation___$$
+
+<!--% Faites un graphique composite des résidus de votre modèle `achatina_poly`.-->
+
+```{r poly_resid}
+
+```
+
+<!--% Décrivez chaque graphique de ce graphique composite ci-dessus en 2 à 3 phrases. Soyez complet ! -->
+
+## Comparaison des modèles
+
+<!--% Comparez vos deux modèles à l'aide des indicateurs les plus pertinents. -->
+
+```{r compa}
+
+```
+
+<!--% Décrivez la comparaison des modèles ci-dessus en 2 à 4 phrases. Soyez complet ! -->
+
+## Discussion et conclusions
+
+<!--% Selon vous, est-ce que votre meilleur modèle représente correctement vos données. Répondez en 4 à 6 lignes. Énoncez éventuellement des pistes d'amélioration du modèle dans vos conclusions. -->
+
+# Bibliographie
