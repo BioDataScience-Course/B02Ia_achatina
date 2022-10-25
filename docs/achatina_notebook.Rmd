@@ -25,7 +25,7 @@ SciViews::R("model", lang = "fr")
 
 @VanOsselaer2000
 
-<!--# Deux citations ont été ajoutées ci-dessus afin de citer correctement vos sources. -->
+<!--# Deux citations ont été ajoutées ci-dessus afin de citer correctement vos sources. Incorporez la forme la plus appropriée dans le texte de votre introduction. -->
 
 # But
 
@@ -42,8 +42,9 @@ read("../data/achatina.csv") %>.%
       radius = "Rayon de la suture",
       shell  = "Type de coquille"),
     units = list(
-      radius = "mm"
-  )) -> achatina
+      radius = "mm")
+  ) %->%
+  achatina
 ```
 
 ## Description des données
@@ -56,9 +57,11 @@ read("../data/achatina.csv") %>.%
 
 <!--% Décrivez le graphique ci-dessus en 2 à 3 phrases.-->
 
+> N'oubliez pas les "block quotes" pour les parties qui ne sont pas réalisées strictement seul
+
 ## Modélisation via la régression linéaire simple
 
-<!--% Utilisez la fonction `lm()` pour calculer la régression linéaire demandée. Placez le résultat dans une variable `abalone_lm`. Superposez la droite de régression sur le nuage de point dans un graphique. -->
+<!--% Utilisez la fonction `lm()` pour calculer la régression linéaire demandée (pour cet exercice, vous ne tenterez aucune transformation des données). Placez le résultat dans une variable `achatina_lm`. Superposez la droite de régression sur le nuage de point dans un graphique. -->
 
 ```{r lin}
 
@@ -82,11 +85,11 @@ $$___equation___$$
 
 ```
 
-<!--% Décrivez chaque graphique de ce graphique composite ci-dessus en 2 à 3 phrases. Soyez complet ! -->
+<!--% Décrivez chacun des 4 graphiques de l'analyse des résidus ci-dessus en 4 à 5 phrases. Soyez complet ! -->
 
 ## Modélisation via la régression polynomiale
 
-<!--% Utilisez la fonction `lm()` pour calculer une régression polynomiale. Placez le résultat dans une variable `achatina_poly`. Superposez la droite de régression sur le nuage de point dans un graphique. -->
+<!--% Utilisez la fonction `lm()` pour calculer une régression polynomiale. Placez le résultat dans une variable `achatina_poly`. Choisissez le bon degré du polynôme et simplifiez ce qui doit l'être (vos différents essais ne doivent pas apparaître, mais faire un commit avec un message explicite à chaque étape est une pratique très fortement recommandée). Superposez la courbe de régression sur le nuage de point dans un graphique. -->
 
 ```{r poly}
 
@@ -110,7 +113,7 @@ $$___equation___$$
 
 ```
 
-<!--% Décrivez chaque graphique de ce graphique composite ci-dessus en 2 à 3 phrases. Soyez complet ! -->
+<!--% Décrivez chacun des 4 graphiques de l'analyse des résidus ci-dessus en 4 à 5 phrases. Soyez complet ! -->
 
 ## Comparaison des modèles
 
@@ -120,10 +123,12 @@ $$___equation___$$
 
 ```
 
-<!--% Décrivez la comparaison des modèles ci-dessus en 2 à 4 phrases. Soyez complet ! -->
+<!--% Décrivez la comparaison des modèles ci-dessus en 2 à 4 phrases. -->
 
 ## Discussion et conclusions
 
-<!--% Selon vous, est-ce que votre meilleur modèle représente correctement vos données. Répondez en 4 à 6 lignes. Énoncez éventuellement des pistes d'amélioration du modèle dans vos conclusions. -->
+<!--% Quel est le meilleur modèle. Selon vous, est-ce que votre meilleur modèle représente correctement vos données. Répondez en 3 à 4 phrases. Énoncez éventuellement des pistes d'amélioration du modèle dans vos conclusions. -->
+
+> Ce projet a été finalisé en ... (+éventuellement) Temps supplémentaire nécessaire : ... Difficultés rencontrées : ... Suggestions : ...
 
 # Bibliographie
