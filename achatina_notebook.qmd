@@ -2,24 +2,34 @@
 title: "Modélisation de la croissance de la coquille de l'escargot géant d'Afrique"
 author: "___"
 date: "___"
-bibliography: "../biblio/biblio.bib"
-output: html_document
+format:
+  html:
+    code-fold: true
+    code-tools: true
+    toc: true
+editor: visual
+lang: fr
+bibliography: "biblio/biblio.bib"
 ---
 
 <!--# Ceci est un commentaire. -->
 
 <!--% Ceci est une consigne. Ne jamais modifier ni déplacer les consignes dans le document ! -->
 
-<!--% Ajoutez la date et votre nom dans l'entête YAML.-->
+<!--% Remplacez ___ par votre nom et par la date dans l'entête YAML. -->
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+# Nécessaire pour les tests SDD, ne pas utiliser dans un "vrai" projet
+if (!"tools:tests" %in% search())
+  source(here::here("tests/tools_tests.R"), attach(NULL, name = "tools:tests"))
+
+# Configuration de l'environnement
 SciViews::R("model", lang = "fr")
 ```
 
 # Introduction
 
-<!--% Rédigez l'introduction en 3 à 4 phrases en vous aidant de l'article proposé dans le dossier `biblio/`. -->
+<!--% Rédigez l'introduction en 3 à 4 phrases en vous aidant de l'article dans le sous-dossier `biblio`. -->
 
 [@VanOsselaer2000]
 
@@ -29,12 +39,16 @@ SciViews::R("model", lang = "fr")
 
 # But
 
-<!--% Rédigez le but de ce carnet de notes en 1 à 2 phrases en vous aidant des consignes présentées dans le `README.md`.-->
+<!--% Rédigez le but de ce carnet de notes en 1 à 2 phrases en vous aidant des consignes dans `README.md`. -->
+
+# Matériel et méthodes
+
+TODO...
 
 # Analyses
 
 ```{r import, echo=FALSE, message=FALSE, results='hide'}
-read("../data/achatina.csv") %>.%
+read("data/achatina.csv") %>.%
   smutate(., shell = as.factor(shell)) %>.%
   labelise(.,
     label = list(
@@ -43,7 +57,7 @@ read("../data/achatina.csv") %>.%
       shell  = "Type de coquille"),
     units = list(
       radius = "mm")
-  ) %->%
+  ) ->
   achatina
 ```
 
@@ -67,7 +81,7 @@ read("../data/achatina.csv") %>.%
 
 ```
 
-<!--% Faites un résumé de votre modèle avec la fonction `summary()` appliquée sur votre objet `achatina_lm`.-->
+<!--% Faites un résumé de votre modèle avec la fonction `summary()` appliquée sur votre objet `achatina_lm` et formatez le tableau avec `tabularise()`. -->
 
 ```{r lin_summary}
 
@@ -75,11 +89,11 @@ read("../data/achatina.csv") %>.%
 
 <!--% Décrivez le résultat du résumé de l'objet `achatina_lm` en 3 à 4 phrases. Soyez complet ! -->
 
-<!--% Écrivez l'équation mathématique de ce modèle (paramétrisation du modèle) en utilisant la syntaxe LaTeX ci-dessous. -->
+<!--% Écrivez l'équation mathématique de ce modèle paramétré en utilisant la syntaxe LaTeX ci-dessous. -->
 
 $$___equation___$$
 
-<!--% Faites un graphique composite des résidus de votre modèle `achatina_lm`.-->
+<!--% Faites un graphique composite des résidus de votre modèle `achatina_lm`. -->
 
 ```{r lin_resid}
 
@@ -103,11 +117,11 @@ $$___equation___$$
 
 <!--% Décrivez le résultat du résumé de l'objet `achatina_poly` en 3 à 4 phrases. Soyez complet ! -->
 
-<!--% Écrivez l'équation mathématique de ce modèle (paramétrisation du modèle) en utilisant la syntaxe LaTeX ci-dessous. -->
+<!--% Écrivez l'équation mathématique du modèle paramétré en utilisant la syntaxe LaTeX ci-dessous. -->
 
 $$___equation___$$
 
-<!--% Faites un graphique composite des résidus de votre modèle `achatina_poly`.-->
+<!--% Faites un graphique composite des résidus de votre modèle `achatina_poly`. -->
 
 ```{r poly_resid}
 
@@ -125,7 +139,7 @@ $$___equation___$$
 
 <!--% Décrivez la comparaison des modèles ci-dessus en 2 à 4 phrases. -->
 
-## Discussion et conclusions
+# Discussion et conclusions
 
 <!--% Quel est le meilleur modèle. Selon vous, est-ce que votre meilleur modèle représente correctement vos données. Répondez en 3 à 4 phrases. Énoncez éventuellement des pistes d'amélioration du modèle dans vos conclusions. -->
 
