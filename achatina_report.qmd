@@ -1,0 +1,122 @@
+---
+title: "Modélisation de la croissance de la coquille de l'escargot géant d'Afrique *Achatine achatina* (L., 1758)"
+author:
+  - name: "Philippe Grosjean"
+    affiliations:
+      - name: "Service d'Écologie numérique, Université de Mons, Belgique"
+    corresponding: true
+  - name: "Guyliann Engels"
+    affiliations:
+      - name: "Cellule de pédagogie facultaire des Sciences, Université de Mons, Belgique"
+date: "`r Sys.Date()`"
+format:
+  html:
+    code-fold: true
+    code-tools: true
+    toc: true
+editor: visual
+lang: fr
+bibliography: "biblio/biblio.bib"
+---
+
+<!--# Ceci est un commentaire. -->
+
+<!--% Ceci est une consigne. Ne jamais modifier ni déplacer les consignes dans le document ! -->
+
+```{r setup, include=FALSE}
+# Configuration de l'environnement
+SciViews::R("model", lang = "fr")
+
+# Importation des données
+# Note: on utilise r et θ comme dans l'article original !
+read("data/achatina.csv") %>.%
+  smutate(., shell = as.factor(shell)) %>.%
+  srename(., θ = coils, r = radius) %>.%
+  labelise(.,
+    label = list(
+      θ = "θ",
+      r = "r",
+      shell  = "Coquille"),
+    units = list(
+      r = "mm")
+  ) ->
+  achatina
+```
+
+# Introduction
+
+@VanOsselaer2000 ont proposé un modèle de croissance de la coquille spiralée de mollusques gastéropodes. Il est basé sur une hélicospirale logarithmique (@eq-helicospiral) ajustée à la forme en trois dimensions de la suture de la coquille. Cet ajustement est réalisé entre le rayon de la suture $r$ et le nombre de tours de la coquille $\theta$ (le rayon étant mesuré depuis l'axe d'enroulement de la coquille). Le modèle est le suivant :
+
+$$
+\operatorname{ln}(r\ [mm]) = \operatorname{ln}\ S_r (\theta) + \operatorname{ln} r_0 + \epsilon
+$$ {#eq-helicospiral}
+
+avec $S_r$ une constante d'expansion de la coquille par rapport au nombre de tours qui est propre à l'espèce, voire à l'individu et $r_0$ le rayon initial de la coquille à l'apex. Ce modèle se réduit à une droite entre $\operatorname{ln} r$ et $\theta$.
+
+La difficulté au départ réside dans la localisation précise de l'axe d'enroulement. Ces mêmes auteurs ont donc élaboré une autre approche pour déterminer la position précise de l'axe d'enroulement *a posteriori*. Les données sont mesurées depuis un axe approximatif qui passe par l'apex de la coquille en trois dimensions. Ensuite, elles sont reprojetées de manière itérative en recherchant le plan de projection qui va minimiser les résidus du modèle hélicospiral logarithmique (@eq-helicospiral).
+
+Ils montrent ensuite que l'axe d'enroulement obtenu par leur méthode est très probablement le bon et que, par ailleurs, l'hélicospirale logarithmique s'ajuste très bien sur la forme tridimensionnelle de la suture de plusieurs espèces de mollusques gastéropodes, du moins si l'on sépare la coquille du juvénile (la protoconche) de celle de l'adulte (la téléoconche).
+
+# But
+
+Nous explorons ici un modèle plus simple, basé sur la régression linéaire polynomiale pour représenter la croissance de la coquille d'*Achatina achatina* (L., 1758) sans projeter les points dans un autre plan que celui de la mesure autour de l'axe d'enroulement approximatif passant par l'apex.
+
+# Matériel et méthodes
+
+Les données utilisées sont les mêmes mesures réalisées sur *Achatina achatina* de la publication [@VanOsselaer2000], correspondant à leur Figure 9. Elles sont issues de l'analyse d'image d'une photographique en vue apicale de la coquille d'une achatine adulte prise de telle manière que le plan de l'image soit orthogonal à l'axe d'enroulement estimé de la coquille passant par l'apex.
+
+Les analyses sont réalisées dans `r R.version.string` et plus précisément en utilisant la [SciViews Box 2023](https://www.sciviews.org/svbox/) dans [Saturn Cloud](https://saturncloud.io). Le dialecte `SciViews::R` version `r packageVersion("SciViews")`, ainsi que les packages {stats} version `r packageVersion("stats")`, {chart} version `r packageVersion("chart")` et {tabularise} version `r packageVersion("tabularise")` sont utilisés sous `r osVersion`.
+
+# Résultats
+
+```{r model}
+achatina_poly <- lm(data = achatina, r ~ θ + I(θ^2) + I(θ^3) + 0)
+```
+
+Un modèle empirique basé sur une équation polynomiale d'ordre trois forcée à l'origine (@eq-poly0) est ajusté de manière satisfaisante dans les données de rayon de coquille $r$ non recalculé par rapport à l'axe approximatif passant par l'apex et le nombre de tours $\theta$, et ce, à la fois pour la protoconche et pour la téléoconche. Les statistiques des paramètres $\beta_1$, $\beta_2$ et $\beta_3$ de ce modèle sont présentées à la @tbl-coefs. Le graphique du modèle montre un ajustement qui parait satisfaisant (@fig-chart).
+
+$$
+`r eq__(achatina_poly, ital_vars = TRUE)`
+$$ {#eq-poly0}
+
+```{r tbl-coefs, warning=FALSE}
+#| tbl-cap: Paramètres du modèle polynomial d'ordre trois ajusté aux données de croissance de la coquille d'*Achatina achatina*. Les trois paramètres sont significativement différents de zéro au seuil $\alpha$ de 5%.
+tabularise$tidy(achatina_poly, header = FALSE, equation = TRUE)
+```
+
+```{r fig-chart}
+#| fig-cap: Modèle polynomial d'ordre trois représentant la croissance de la coquille d'*Achatina achatina*. Le modèle est la courbe bleue ; l'enveloppe de confiance à 95% du modèle est en gris clair. Des oscillations sont observables autour du modèle, surtout à partir de trois tours (téléoconche). Sinon, ce modèle empirique représente bien l'évolution globale du rayon avec la croissance de l'animal (nombre de tours θ).
+chart(achatina_poly) +
+  geom_point(data = achatina, f_aes(r ~ θ %col=% shell)) +
+  labs(title = "", x = "Nombre de tours θ", y = "Rayon de la suture r (mm)",
+    col = "Coquille") +
+  scale_color_manual(values = c("red3", "black"),
+    labels = c("protoconche", "téléoconche"))
+```
+
+L'@eq-param est la version paramétrée du modèle pour les données relatives à la coquille d'*Achatina achatina* étudiée ici (un seul spécimen mesuré). L'analyse des résidus est présentée à la @fig-resid. Elle montre essentiellement que les oscillations, principalement pour les nombres de tours plus élevés, mènent à un hétéroscédasticité (graphique C) et à des points influents (graphique D).
+
+$$
+`r eq__(achatina_poly, use_coefs = TRUE, ital_vars = TRUE)`
+$$ {#eq-param}
+
+```{r fig-resid}
+#| fig-cap: Analyse des résidus du modèle polynomial d'ordre trois (voir @fig-chart). (A) Résidus en fonction des valeurs prédites montrant des oscillations essentiellement pour la téléoconche. (B) Graphique quantile-quantile des résidus indiquant une distribution similaire à une gaussienne. (C) Graphique permettant de visualiser l'hétéroscédasticité des résidus, liée probablement aux oscillations. (D) Effet de levier et distance de Cook (taille des points) montrant la présence de points influents.
+chart$residuals(achatina_poly)
+```
+
+# Discussion
+
+Dans le but de simplifier la modélisation de la croissance de coquilles spiralées de mollusques gastéropodes, nous avons recherché un modèle empirique qui s'ajuste bien dans les données de rayons de coquille $r$ mesurés à partir d'un axe d'enroulement approximatif passant par l'apex en fonction des tours $\theta$, sans autre transformation des données. Nous avons observé que, dans le cas d'*Achatina achatina*, un modèle polynomial d'ordre trois forcé à l'origine représente bien la croissance de la coquille incluant à la fois la protoconche et la téléoconche.
+
+@VanOsselaer2000 insistent bien, dans leur publication, sur l'importance de déterminer précisément la position de l'axe d'enroulement de la coquille, sans quoi des oscillations parasites et une impossibilité de montrer le caractère hélicospiral logarithmique de la croissance se marquent. Effectivement ici, nous observons de telles oscillations, surtout pour la téléoconche.
+
+Un autre avantage de leur modèle hélicospiral logarithmique est une interprétabilité de ses paramètres : le $S_r$ dans leur équation (@eq-helicospiral) est, en effet, utilisable pour comparer la croissance de la coquille d'une espèce à l'autre. Dans le modèle polynomial, nous savons que les trois paramètres $\beta_1$, $\beta_2$ et $\beta_3$ sont intercorrélés et impossibles à interpréter isolément. Il n'y a pas moyen d'établir une relation entre ces trois paramètres et $S_r$. Cela affaiblit donc notre modèle empirique par rapport au modèle original.
+
+Un avantage de l'équation polynomiale est la possibilité d'utiliser un modèle unique pour représenter la protoconche et la téléoconche. Cependant, la croissance et l'axe d'enroulement de ces deux phases semblent bel et bien différents d'après l'article original. Cela signifie alors que notre modèle n'est pas assez sensible pour les détecter. Le modèle hélicospiral logarithmique permet même d'indiquer précisément après combien de tours la transition (parfois très nette, voire leur Fig. 8, cas de *Oliva porphyria*) se réalise.
+
+# Conclusions
+
+Nous avons montré qu'il est possible d'ajuster un modèle empirique dans les données de rayon de suture en fonction des tours pour une coquille spiralée d'*Achatina achatina* **sans transformation des données**. Ce résultat est encore à vérifier sur d'autres coquilles de mollusques gastéropodes (autres espèces). Toutefois, il montre ses limites par rapport au modèle hélicospiral logarithmique après reprojection des points autour d'un axe d'enroulement déterminé précisément parce que des oscillations parasites subsistent. Aussi, son interprétabilité est nettement moindre. Nous pouvons donc nous demander si la facilité d'ajustement de ce modèle en vaut la peine par rapport au modèle hélicospiral proposé dans l'article original.
+
+# Référence

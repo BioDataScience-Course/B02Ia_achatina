@@ -13,6 +13,8 @@ original :
 	echo "  • Élimination des versions compilées des documents Quarto..."
 	rm -f ../achatina_notebook.html
 	rm -rf ../achatina_notebook_files
+	rm -f ../achatina_report.html
+	rm -rf ../achatina_report_files
 	echo "  • Effacement des objets créés pour les tests..."
 	rm -rf results
 	echo "✔︎ Documents originaux installés."
@@ -28,6 +30,8 @@ solution :
 	echo "  • Élimination des version compilées des documents Quarto..."
 	rm -f ../achatina_notebook.html
 	rm -rf ../achatina_notebook_files
+	rm -f ../achatina_report.html
+	rm -rf ../achatina_report_files
 	echo "  • Effacement des objets créés pour les tests..."
 	rm -rf results
 	echo "✔︎ Solution installée. Réexécutez les scripts et les rendus Quarto."
@@ -43,6 +47,8 @@ prepare :
 	echo "  • Élimination des versions compilées des documents Quarto..."
 	rm -f ../achatina_notebook.html
 	rm -rf ../achatina_notebook_files
+	rm -f ../achatina_report.html
+	rm -rf ../achatina_report_files
 	echo "  • Effacement des objets créés pour les tests..."
 	rm -rf results
 	echo "✔︎ Préparation terminée !"
