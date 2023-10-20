@@ -44,32 +44,30 @@ Respectez la structure du document.
 **À la fin de votre étude, vérifiez que votre document
 `achatina_notebook.qmd` compile en un fichier final HTML sans erreurs
 via le bouton Knit.** Vous avez une batterie de tests à votre
-disposition ensuite pour vérifier que le travail est fait correctement
-(onglet “Construire” -\> bouton “Construire tout”). Vérifiez enfin que
-vous avez **enregistré vos modifications**, puis fait un **commit**, un
-**pull** et un **push**. Vous pouvez vérifier directement dans le dépôt
-GitHub : il présente votre travail tel qu’il sera visible à la
-correction. **L’oubli d’un enregistrement et/ou d’un commit ou d’un push
-peut faire qu’une partie de votre travail ne sera pas pris en compte**,
-donc vérifiez plutôt deux fois qu’une.
+disposition ensuite pour vérifier que le travail est réalisé
+correctement (onglet “Construire” -\> bouton “Construire tout”).
+Vérifiez enfin que vous avez **enregistré vos modifications**, puis
+faites un **commit**, un **pull** et un **push**. Vous pouvez
+directement vérifier dans le dépôt GitHub qu’il présente votre travail
+tel qu’il sera visible à la correction. **L’oubli d’un enregistrement
+et/ou d’un commit ou d’un push peut faire qu’une partie de votre travail
+ne sera pas pris en compte**, donc vérifiez plutôt deux fois qu’une.
 
-# Informations complémentaires sur les données
-
-Les données de ce projet ont été employées dans le cadre d’une
-publication de Van Osselaer et Grosjean (2000). Cette publication est
-disponible dans le dossier `biblio`. *Profitez-en pour vérifier que vous
-comprenez bien comment utiliser votre bibliographie dans un document
-Quarto en regardant les balises utilisées dans `achatina_notebook.qmd`
-et `achatina_report.qmd` en passant l’éditeur en mode “source”.*
+Les deux documents Quarto (`achatina_notebook.qmd` et
+`achatina_report.qmd`) comprennent une bibliographie. **Vérifiez que
+vous comprenez bien comment l’utiliser dans un document Quarto en
+regardant les balises employées en passant l’éditeur en mode “source”.**
 Faites-en de même pour les labels, légendes et références croisées des
 figures, tables et équations dans `achatina_report.qmd`. Voyez aussi la
 façon d’inclure des informations supplémentaires sur les auteurs dans le
 même document.
 
-Évitez cependant de perdre trop de temps à lire la bibliographie et les
-formatages Markdown dans le cadre de cet exercice (vous pourrez toujours
-y revenir plus tard). Nous vous conseillons d’organiser votre temps
-comme suit :
+Les données de ce projet ont été employées dans le cadre d’une
+publication de Van Osselaer et Grosjean (2000). Cette publication est
+disponible dans le dossier `biblio`. Évitez cependant de perdre trop de
+temps à lire la bibliographie et les formatages Markdown dans le cadre
+de cet exercice (vous pourrez toujours y revenir plus tard). Nous vous
+conseillons d’organiser votre temps comme suit :
 
 - Prise de connaissance des consignes et lecture de l’abstract de la
   publication
