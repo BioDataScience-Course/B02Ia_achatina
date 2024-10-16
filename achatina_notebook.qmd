@@ -43,7 +43,7 @@ Les données utilisées sont les mêmes mesures réalisées sur *Achatina achati
 
 <!--% Complétez les éléments ___ dans le chunk ci-dessous afin d'importer et d'ajouter des étiquettes et des unités aux variables du tableau de données assigné à `achatina`. Les métadonnées se trouvent dans le README. -->
 
-```{r import, message=FALSE, record='RODFS'}
+```{r import, message=FALSE, record='RODFS', object='achatina'}
 read("___") %>.%
   smutate(., shell = as.factor(shell)) %>.%
   labelise(.,
