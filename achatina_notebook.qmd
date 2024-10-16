@@ -16,7 +16,7 @@ bibliography: "biblio/biblio.bib"
 
 <!--% Ceci est une consigne. Ne jamais modifier ni déplacer les consignes dans le document ! -->
 
-<!--% Remplacez ___ par votre nom dans l'entête YAML. -->
+<!--% Remplacez ___ par votre prénom et votre nom dans l'entête YAML. -->
 
 ```{r setup, include=FALSE}
 # Nécessaire pour les tests SDD, ne pas utiliser dans un "vrai" projet
@@ -41,9 +41,9 @@ Les données utilisées sont les mêmes mesures réalisées sur *Achatina achati
 
 # Analyses
 
-<!--% Complétez les éléments ___ dans le chunk ci-dessous -->
+<!--% Complétez les éléments ___ dans le chunk ci-dessous afin d'importer et d'ajouter des étiquettes et des unités aux variables du tableau de données assigné à `achatina`. Les métadonnées se trouvent dans le README. -->
 
-```{r import, echo=FALSE, message=FALSE, results='hide', record='RODFS', object='achatina'}
+```{r import, message=FALSE, record='RODFS'}
 read("___") %>.%
   smutate(., shell = as.factor(shell)) %>.%
   labelise(.,
@@ -61,7 +61,7 @@ read("___") %>.%
 
 <!--% Réalisez un nuage de points de la variable `radius` en fonction de la variable `coils` en utilisant la couleur pour le type de coquille. -->
 
-```{r plot, record='RNSTR', arg='labels'}
+```{r plot, record='RNCS'}
 chart(data = ___, ___) ___
   ___
 ```
@@ -109,7 +109,7 @@ select_answer(r"-{
 
 <!--% Faites un résumé de votre modèle avec la fonction `summary()` appliquée sur votre objet `achatina_lm` et formatez le tableau avec `tabularise()`. -->
 
-```{r linsummary, record='RNP', arg='col_keys'}
+```{r linsummary,  record='RNP', arg='col_keys', warning=FALSE}
 ___
 ```
 
@@ -122,8 +122,10 @@ select_answer(r"-{
 [] -   Le *R*^2^ est moyennement élevé. Le modèle reprend une part limitée de la variance des données.
 [] -   Le *R*^2^ est faible. Le modèle reprend une part très limitée de la variance des données.
 [] -   Le *R*^2^ est très faible. Le modèle ne représente pas bien les données.
+  
 [] -   Le modèle est significatif au seuil $\alpha$ de 5% (ANOVA).
 [] -   Le modèle n'est pas significatif au seuil $\alpha$ de 5% (ANOVA).
+  
 [] -   La pente de la droite est significativement différente de zéro au seuil $\alpha$ de 5% (test *t* de Student).
 [] -   La pente de la droite n'est pas significativement différente de zéro au seuil $\alpha$ de 5% (test *t* de Student).
 [] -   L'ordonnée à l'origine est significativement différente de zéro au seuil $\alpha$ de 5% (test *t* de Student).
@@ -142,7 +144,7 @@ $$
 
 <!--% Faites un graphique composite des résidus de votre modèle `achatina_lm`. -->
 
-```{r linresid, record='RNP', arg='labels'}
+```{r linresid, record='RNCS', arg='no.data'}
 ___
 ```
 
@@ -158,18 +160,21 @@ select_answer(r"-{
 [] -   Le nuage de points n'est pas linéaire (A).
 [] -   Une valeur extrême s'observe (A).
 [] -   Plusieurs valeurs extrêmes sont présentes (A).
+  
 [] -   Les résidus suivent une distribution Normale (B).
 [] -   Les résidus sont raisonnablement proches d'une distribution Normale (B).
 [] -   Les résidus ne suivent pas une gaussienne mais la distribution est symétrique (B).
 [] -   Les résidus ne suivent pas une gaussienne et la distribution est asymétrique (B).
 [] -   Les résidus s'étalent vers les petites valeurs (longue queue de distribution à gauche) (B).
 [] -   Les résidus s'étalent vers les grandes valeurs (longue queue de distribution à droite) (B).
+  
 [] -   Les résidus ont une variance constante (homoscédasticité, C).
 [] -   Les résidus ont une variance relativement constante (proche de l'homoscédasticité ; écarts qui restent acceptables, C).
 [] -   Les résidus ont une variance qui augmente avec les valeurs prédites (hétéroscédasticité importante, C).
 [] -   Les résidus ont une variance qui augmente inversément avec les valeurs prédites (hétéroscédasticité importante, C).
 [] -   Les résidus ont une variance qui augmente aux valeurs prédites intermédiaires (hétéroscédasticité importante, C).
 [] -   Les résidus ont une variance qui augmente aux extrémités (hétéroscédasticité importante, C).
+  
 [] -   Aucune observation particulièrement influente n'est observée, tant pour la distance de Cook que pour l'effet de levier (D).
 [] -   Une observation influente est observée pour la distance de Cook avec effet de levier important (D).
 [] -   Une observation influente est observée pour la distance de Cook mais avec effet de levier acceptable (D).
@@ -196,11 +201,13 @@ select_answer(r"-{
 [] -   La courbe s'ajuste relativement bien dans les données.
 [] -   La courbe ne s'ajuste pas bien dans les données.
 [] -   La courbe ne s'ajuste pas du tout dans les données.
+  
 [] -   L'enveloppe de confiance à 95% est très étroite et le modèle est estimé avec une excellente précision.
 [] -   L'enveloppe de confiance à 95% est relativement étroite et le modèle est estimé avec une précision acceptable.
 [] -   L'enveloppe de confiance à 95% est large aux deux extrémités et le modèle est mal estimé.
 [] -   L'enveloppe de confiance à 95% est large pour les petites valeurs et le modèle est mal estimé en plage basse.
 [] -   L'enveloppe de confiance à 95% est large pour les grandes valeurs et le modèle est mal estimé en plage haute.
+  
 [] -   Une observation extrême semble influencer la forme de la courbe.
 [] -   Plusieurs observations extrêmes semblent influencer la forme de la courbe.
 [] -   La courbe est proche de l'horizontale et il n'y a peut-être pas de relation entre les deux variables.
@@ -222,8 +229,10 @@ select_answer(r"-{
 [] -   Le *R*^2^ est moyennement élevé. Le modèle reprend une part limitée de la variance des données.
 [] -   Le *R*^2^ est faible. Le modèle reprend une part très limitée de la variance des données.
 [] -   Le *R*^2^ est très faible. Le modèle ne représente pas bien les données.
+  
 [] -   Le modèle est significatif au seuil $\alpha$ de 5% (ANOVA).
 [] -   Le modèle n'est pas significatif au seuil $\alpha$ de 5% (ANOVA).
+  
 [] -   Le paramètre $\beta$ de puissance la plus élevée est significativement différent de zéro au seuil $\alpha$ de 5% (test *t* de Student).
 [] -   La paramètre $\beta$ de puissance la plus élevée n'est pas significativement différente de zéro au seuil $\alpha$ de 5% (test *t* de Student).
 [] -   Les autres paramètres $\beta$s sont significativement différents de zéro au seuil $\alpha$ de 5% (test *t* de Student).
@@ -231,6 +240,7 @@ select_answer(r"-{
 [] -   Parmi les autres paramètres $\beta$s, certains sont et d'autres ne sont pas significativement différents de zéro au seuil $\alpha$ de 5% (test *t* de Student) mais nous ne pouvons pas simplifier le modèle.
 [] -   Parmi les autres paramètres $\beta$s, certains sont et d'autres ne sont pas significativement différents de zéro au seuil $\alpha$ de 5% (test *t* de Student) et nous pourrions encore simplifier le modèle.
 [] -   Les autres paramètres $\beta$s ne peuvent être interprétés par rapport au test *t* de Student car ces paramètres sont intercorrélés.
+  
 [] -   L'ordonnée à l'origine $\alpha$ est significativement différente de zéro au seuil $\alpha$ de 5% (test *t* de Student).
 [] -   L'ordonnée à l'origine $\alpha$ n'est pas significativement différente de zéro au seuil $\alpha$ de 5% (test *t* de Student).
 [] -   L'ordonnée à l'origine a été forcée à zéro dans le modèle.}-")
@@ -248,7 +258,7 @@ $$
 
 <!--% Faites un graphique composite des résidus de votre modèle `achatina_poly`. -->
 
-```{r polyresid, record='RNP', arg='labels'}
+```{r polyresid, record='RNCS', arg='no.data'}
 ___
 ```
 
@@ -268,12 +278,14 @@ select_answer(r"-{
 [] -   La courbe s'éloigne du nuage de points aux extrémités (A).
 [] -   Une valeur extrême s'observe (A).
 [] -   Plusieurs valeurs extrêmes sont présentes (A).
+  
 [] -   Les résidus suivent une distribution Normale (B).
 [] -   Les résidus sont raisonnablement proches d'une distribution Normale (B).
 [] -   Les résidus ne suivent pas une gaussienne mais la distribution est symétrique (B).
 [] -   Les résidus ne suivent pas une gaussienne et la distribution est asymétrique (B).
 [] -   Les résidus s'étalent vers les petites valeurs (longue queue de distribution à gauche) (B).
 [] -   Les résidus s'étalent vers les grandes valeurs (longue queue de distribution à droite) (B).
+  
 [] -   Les résidus ont une variance constante (homoscédasticité, C).
 [] -   Les résidus ont une variance relativement constante (proche de l'homoscédasticité ; écarts qui restent acceptables, C).
 [] -   Les résidus ont une variance qui augmente avec les valeurs prédites (hétéroscédasticité importante, C).
@@ -282,6 +294,7 @@ select_answer(r"-{
 [] -   Les résidus ont une variance qui augmente aux extrémités (hétéroscédasticité importante, C).
 [] -   Les oscillations des résidus plus importantes pour les valeurs prédites faibles sont probablement responsables de l'hétéroscédasticité (C).
 [] -   Les oscillations des résidus plus importantes pour les valeurs prédites élevées sont probablement responsables de l'hétéroscédasticité (C).
+
 [] -   Aucune observation particulièrement influente n'est observé, tant pour la distance de Cook que pour l'effet de levier (D).
 [] -   Une observation influente est observée pour la distance de Cook avec effet de levier important (D).
 [] -   Une observation influente est observée pour la distance de Cook mais avec effet de levier acceptable (D).
@@ -341,7 +354,7 @@ select_answer(r"-{
 
 -   ...
 
--   **...**
+-   ...
 
 -   ...
 
