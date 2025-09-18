@@ -1,6 +1,6 @@
 Package: B02Ia_achatina
 Type: Package
-Version: 2.1.0
+Version: 2.2.0
 Title: Modélisation de la croissance de la coquille de l'escargot géant d'Afrique
 Description: Projet individuel cadré du module 2 du cours SDD II à l'UMONS
 Authors@R: c(
@@ -11,8 +11,8 @@ Authors@R: c(
     email = "phgrosjean@sciviews.org",
     comment = c(ORCID = "0000-0002-2694-9471"))
   )
-Depends: R (>= 4.3.0)
-SystemRequirements: SciViews Box 2024 (https://www.sciviews.org/software/svbox/)
+Depends: R (>= 4.4.0)
+SystemRequirements: SciViews Box 2025 (https://www.sciviews.org/software/svbox/)
 License: CC BY-NC-SA 4.0
 URL: https://github.com/BioDataScience-Course/B02Ia_achatina
 BugReports: https://github.com/BioDataScience-Course/B02Ia_achatina/issues

@@ -9,7 +9,7 @@ test_that("Le bloc-notes est-il compilé en un fichier final HTML ?", {
   # Vérifiez aussi que ce rendu se réalise sans erreur, sinon, lisez le message
   # qui s'affiche dans l'onglet 'Travaux' et corrigez ce qui ne va pas dans
   # votre document avant de réaliser à nouveau un rendu HTML.
-  # IL EST TRES IMPORTANT QUE VOTRE DOCUMENT COMPILE ! C'est tout de même le but
+  # IL EST TRÈS IMPORTANT QUE VOTRE DOCUMENT COMPILE ! C'est tout de même le but
   # de votre analyse que d'obtenir le document final HTML.
   
   expect_true(is_rendered_current("achatina_notebook.qmd"))
@@ -117,7 +117,7 @@ test_that("Chunk 'plot' : représentation graphique des données", {
   expect_true(is_identical_to_ref("plotcomment"))
   # L'interprétation du graphique rayon en fonction du nombre de tours est
   # (partiellement) fausse
-  # Vous devez cochez les phrases qui décrivent le graphique d'un 'x' entre les
+  # Vous devez cocher les phrases qui décrivent le graphique d'un 'x' entre les
   # crochets [] -> [x]. Ensuite, vous devez recompiler la version HTML du
   # bloc-notes (bouton 'Rendu') sans erreur pour réactualiser les résultats.
   # Assurez-vous de bien comprendre ce qui est coché ou pas : vous n'aurez plus
@@ -134,7 +134,7 @@ test_that("Chunks 'lin' et 'lincomment', régression linéaire simple", {
   
   expect_true(is_identical_to_ref("lincomment"))
   # L'interprétation de la régression linéaire simple est (partiellement) fausse
-  # Vous devez cochez les phrases qui décrivent la régression d'un 'x' entre les
+  # Vous devez cocher les phrases qui décrivent la régression d'un 'x' entre les
   # crochets [] -> [x]. Ensuite, vous devez recompiler la version HTML du
   # bloc-notes (bouton 'Rendu') sans erreur pour réactualiser les résultats.
   # Assurez-vous de bien comprendre ce qui est coché ou pas : vous n'aurez plus
@@ -151,7 +151,7 @@ test_that("Chunks 'linsummary' et 'linsummarycomment', résumé de la première 
   expect_true(is_identical_to_ref("linsummarycomment"))
   # L'interprétation du résumé de la régression linéaire simple est
   # (partiellement) fausse
-  # Vous devez cochez les phrases qui décrivent le résumé de la régression d'un
+  # Vous devez cocher les phrases qui décrivent le résumé de la régression d'un
   # 'x' entre les crochets [] -> [x]. Ensuite, vous devez recompiler la version
   # HTML du bloc-notes (bouton 'Rendu') sans erreur pour réactualiser les
   # résultats. Assurez-vous de bien comprendre ce qui est coché ou pas : vous
@@ -214,7 +214,7 @@ test_that("Chunks 'polysummary' et 'polysummarycomment', résumé de la régress
   expect_true(is_identical_to_ref("polysummarycomment"))
   # L'interprétation du résumé de la régression polynomiale est
   # (partiellement) fausse
-  # Vous devez cochez les phrases qui décrivent le résumé de la régression d'un
+  # Vous devez cocher les phrases qui décrivent le résumé de la régression d'un
   # 'x' entre les crochets [] -> [x]. Ensuite, vous devez recompiler la version
   # HTML du bloc-notes (bouton 'Rendu') sans erreur pour réactualiser les
   # résultats. Assurez-vous de bien comprendre ce qui est coché ou pas : vous
@@ -255,7 +255,7 @@ test_that("Chunk 'compacomment', comparaison des deux modèles", {
   # Quelle métrique utilise-t-on pour comparer des modèles de complexités
   # différentes ? Comment utilise-t-on ces métriques (revoyez dans le cours) ?
   # Les modèles sont-ils imbriqués ?
-  # Vous devez cochez les phrases qui décrivent le résumé de la régression d'un
+  # Vous devez cocher les phrases qui décrivent le résumé de la régression d'un
   # 'x' entre les crochets [] -> [x]. Ensuite, vous devez recompiler la version
   # HTML du bloc-notes (bouton 'Rendu') sans erreur pour réactualiser les
   # résultats. Assurez-vous de bien comprendre ce qui est coché ou pas : vous
@@ -268,8 +268,8 @@ test_that("La discussion et les conclusions sont-elles complétées ?", {
     "Discussion et conclusions")) |> as_document() |> grepl(
       "^- +\\.+ *$", x = _) |> any()))
   # La discussion et les conclusions ne semblent pas complétées ou vous avez
-  # laissé traîné un item de liste avec "..."
-  # Vous devez remplacer les trois points (...) pas vos éléments de discussion.
+  # laissé traîner un item de liste avec "..."
+  # Vous devez remplacer les trois points (...) par vos éléments de discussion.
   # Ce test concerne la discussion toute entière, comparaison des trois types de
   # documents comprise.
   
@@ -277,8 +277,8 @@ test_that("La discussion et les conclusions sont-elles complétées ?", {
     "Comparaison bloc-notes - rapport - publication")) |> as_document() |>
       grepl("^- +\\.+ *$", x = _) |> any()))
   # La comparaison bloc-notes - rapport - publication ne semble pas complétée
-  # ou vous avez laissé traîné un item de liste avec "..."
-  # Vous devez remplacer les trois points (...) pas vos éléments de comparaison
+  # ou vous avez laissé traîner un item de liste avec "..."
+  # Vous devez remplacer les trois points (...) par vos éléments de comparaison
   # des trois types de documents après les avoir minutieusement comparés (test
   # uniquement sur cette section). C'est la fin d'un exercice assez long, mais
   # comprendre comment bien rédiger chaque type de document est crucial... alors

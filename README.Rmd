@@ -54,7 +54,7 @@ Les données de ce projet ont été employées dans le cadre d'une publication d
 
 ## Consignes
 
-Ce projet comprend deux document Quarto. Le premier document (`achatina_notebook.qmd`) est un carnet de notes que vous devez compléter. Le second (`achatina_report.qmd`) est un rapport déjà complété qui va vous permettre de réaliser une comparaison entre le carnet de notes, le rapport et la publication scientifique.
+Ce projet comprend deux documents Quarto. Le premier document (`achatina_notebook.qmd`) est un carnet de notes que vous devez compléter. Le second (`achatina_report.qmd`) est un rapport déjà complété qui va vous permettre de réaliser une comparaison entre le carnet de notes, le rapport et la publication scientifique.
 
 Vous devez compléter le document intitulé `achatina_notebook.qmd`.
 

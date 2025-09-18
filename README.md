@@ -42,21 +42,21 @@ disponible dans le dossier `biblio`.
 
 ## Consignes
 
-Ce projet comprend deux document Quarto. Le premier document
+Ce projet comprend deux documents Quarto. Le premier document
 (`achatina_notebook.qmd`) est un carnet de notes que vous devez
 compléter. Le second (`achatina_report.qmd`) est un rapport déjà
 complété qui va vous permettre de réaliser une comparaison entre le
-carnet de notes et le rapport.
+carnet de notes, le rapport et la publication scientifique.
 
-Vous devez compléter uniquement le document intitulé
-`achatina_notebook.qmd`
+Vous devez compléter le document intitulé `achatina_notebook.qmd`.
 
 Nous vous conseillons d’organiser votre temps comme suit :
 
 - Prise de connaissance des consignes et lecture de l’abstract de la
   publication
 - Bien comprendre la question posée en lisant attentivement
-  l’introduction et le but du travail qui ont été rédigés pour vous
+  l’introduction et le but du travail qui ont été rédigés pour vous dans
+  le carnet de notes
 - Réaliser l’analyse
 - Interpréter les différents items de l’analyse
 - Réserver suffisamment de temps pour écrire une discussion et des
@@ -64,6 +64,8 @@ Nous vous conseillons d’organiser votre temps comme suit :
 - Comparez le bloc-notes (`achatina_notebook.qmd`), le rapport
   (`achatina_report.qmd`) et la publication scientifique
   (`biblio/VanOsselaer2000_Paleobiology_SutureAndLocationOfTheCoilingAxisInGastropodShells.pdf`).
+  Compiler la version HTML du rapport afin de réaliser une comparaison
+  efficace.
 
 Les deux documents Quarto (`achatina_notebook.qmd` et
 `achatina_report.qmd`) comprennent une bibliographie. **Vérifiez que
@@ -99,7 +101,8 @@ concernant le langage R, les statistiques et la science des données.
 
 ## Référence
 
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent"
+entry-spacing="0">
 
 <div id="ref-VanOsselaer2000" class="csl-entry">
 

@@ -19,9 +19,12 @@ bibliography: "biblio/biblio.bib"
 <!--% Remplacez ___ par votre prénom et votre nom dans l'entête YAML. -->
 
 ```{r setup, include=FALSE}
-# Nécessaire pour les tests SDD, ne pas utiliser dans un "vrai" projet
+# Ceci est nécessaire pour les tests SDD, ne pas utiliser dans un "vrai" projet
 if (!"tools:tests" %in% search())
   source(here::here("tests/tools_tests.R"), attach(NULL, name = "tools:tests"))
+
+# Configure Knitr to use AGG as graphic device
+knitr::opts_chunk$set(dev = "ragg_png")
 
 # Configuration de l'environnement
 SciViews::R("model", lang = "fr")
@@ -37,7 +40,7 @@ Nous explorons ici un modèle plus simple, basé sur la régression linéaire po
 
 # Matériel et méthodes
 
-Les données utilisées sont les mêmes mesures réalisées sur *Achatina achatina* de la publication [@VanOsselaer2000], correspondant à leur Figure 9. Les analyses sont réalisées dans `r R.version.string` et plus précisément en utilisant la [SciViews Box 2023](https://www.sciviews.org/svbox/) dans [Saturn Cloud](https://saturncloud.io).
+Les données utilisées sont les mêmes mesures réalisées sur *Achatina achatina* de la publication [@VanOsselaer2000], correspondant à leur Figure 9. Les analyses sont réalisées dans `r R.version.string` et plus précisément en utilisant la [SciViews Box 2025](https://www.sciviews.org/svbox/) dans [Saturn Cloud](https://saturncloud.io).
 
 # Analyses
 
@@ -75,6 +78,7 @@ select_answer(r"-{
 [] -   Des oscillations sont visibles dans les données.
 [] -   Il y a une valeur extrême.
 [] -   Il y a plusieurs valeurs extrêmes.
+  
 [] -   La téléoconche semble suivre le même modèle que la protoconche.
 [] -   La téléoconche montre moins d'ondulations que la protoconche.
 [] -   La téléoconche montre plus d'ondulations que la protoconche.}-")
@@ -97,19 +101,21 @@ select_answer(r"-{
 [] -   La droite s'ajuste relativement bien dans les données.
 [] -   La droite ne s'ajuste pas bien dans les données.
 [] -   La droite ne s'ajuste pas du tout dans les données.
+  
 [] -   L'enveloppe de confiance à 95% est très étroite et le modèle est estimé avec une excellente précision.
 [] -   L'enveloppe de confiance à 95% est relativement étroite et le modèle est estimé avec une précision acceptable.
 [] -   L'enveloppe de confiance à 95% est large aux deux extrémités et le modèle est mal estimé.
 [] -   L'enveloppe de confiance à 95% est large pour les petites valeurs et le modèle est mal estimé en plage basse.
 [] -   L'enveloppe de confiance à 95% est large pour les grandes valeurs et le modèle est mal estimé en plage haute.
+
 [] -   Une observation extrême semble influencer la position de la droite.
 [] -   Plusieurs observations extrêmes semblent influencer la position de la droite.
 [] -   La droite est proche de l'horizontale et il n'y a peut-être pas de relation entre les deux variables.}-")
 ```
 
-<!--% Faites un résumé de votre modèle avec la fonction `summary()` appliquée sur votre objet `achatina_lm` et formatez le tableau avec `tabularise()`. -->
+<!--% Faites un résumé de votre modèle avec la fonction `summary_()` appliquée sur votre objet `achatina_lm` et formatez le tableau avec `tabularise()`. -->
 
-```{r linsummary,  record='RNP', arg='col_keys', warning=FALSE}
+```{r linsummary, record='RNP', arg='col_keys', warning=FALSE}
 ___
 ```
 
@@ -155,15 +161,17 @@ select_answer(r"-{
 [] -   Les résidus sont faibles par rapport aux valeurs prédites (A).
 [] -   Les résidus sont moyennement élevés par rapport à l'étendue des valeurs prédites (A).
 [] -   Les résidus sont très élevés par rapport à l'étendue des valeurs prédites (A).
+  
 [] -   Le nuage de points est linéaire (A).
 [] -   Le nuage de points est relativement linéaire (A).
 [] -   Le nuage de points n'est pas linéaire (A).
+  
 [] -   Une valeur extrême s'observe (A).
 [] -   Plusieurs valeurs extrêmes sont présentes (A).
   
 [] -   Les résidus suivent une distribution Normale (B).
 [] -   Les résidus sont raisonnablement proches d'une distribution Normale (B).
-[] -   Les résidus ne suivent pas une gaussienne mais la distribution est symétrique (B).
+[] -   Les résidus ne suivent pas une gaussienne, mais la distribution est symétrique (B).
 [] -   Les résidus ne suivent pas une gaussienne et la distribution est asymétrique (B).
 [] -   Les résidus s'étalent vers les petites valeurs (longue queue de distribution à gauche) (B).
 [] -   Les résidus s'étalent vers les grandes valeurs (longue queue de distribution à droite) (B).
@@ -171,7 +179,7 @@ select_answer(r"-{
 [] -   Les résidus ont une variance constante (homoscédasticité, C).
 [] -   Les résidus ont une variance relativement constante (proche de l'homoscédasticité ; écarts qui restent acceptables, C).
 [] -   Les résidus ont une variance qui augmente avec les valeurs prédites (hétéroscédasticité importante, C).
-[] -   Les résidus ont une variance qui augmente inversément avec les valeurs prédites (hétéroscédasticité importante, C).
+[] -   Les résidus ont une variance qui augmente inversement avec les valeurs prédites (hétéroscédasticité importante, C).
 [] -   Les résidus ont une variance qui augmente aux valeurs prédites intermédiaires (hétéroscédasticité importante, C).
 [] -   Les résidus ont une variance qui augmente aux extrémités (hétéroscédasticité importante, C).
   
@@ -214,7 +222,7 @@ select_answer(r"-{
 [] -  Les résidus présentent des oscillations autour de la courbe.}-")
 ```
 
-<!--% Faites un résumé de votre modèle avec la fonction `summary()` appliquée sur votre objet `achatina_poly` et formatez-le avec `tabularise()`. -->
+<!--% Faites un résumé de votre modèle avec la fonction `summary_()` appliquée sur votre objet `achatina_poly` et formatez-le avec `tabularise()`. -->
 
 ```{r polysummary, warning=FALSE, record='RNP', arg='col_keys'}
 ___
@@ -269,6 +277,7 @@ select_answer(r"-{
 [] -   Les résidus sont faibles par rapport à la plage des valeurs prédites (A).
 [] -   Les résidus sont moyennement élevés par rapport à l'étendue des valeurs prédites (A).
 [] -   Les résidus sont très élevés par rapport aux valeurs prédites (A).
+  
 [] -   La courbe est très bien alignée dans le nuage de points (A).
 [] -   La courbe est relativement bien alignée dans le nuage de points (A).
 [] -   La courbe n'est pas bien alignée dans le nuage de points (A).
@@ -294,8 +303,8 @@ select_answer(r"-{
 [] -   Les résidus ont une variance qui augmente aux extrémités (hétéroscédasticité importante, C).
 [] -   Les oscillations des résidus plus importantes pour les valeurs prédites faibles sont probablement responsables de l'hétéroscédasticité (C).
 [] -   Les oscillations des résidus plus importantes pour les valeurs prédites élevées sont probablement responsables de l'hétéroscédasticité (C).
-
-[] -   Aucune observation particulièrement influente n'est observé, tant pour la distance de Cook que pour l'effet de levier (D).
+  
+[] -   Aucune observation particulièrement influente n'est observée, tant pour la distance de Cook que pour l'effet de levier (D).
 [] -   Une observation influente est observée pour la distance de Cook avec effet de levier important (D).
 [] -   Une observation influente est observée pour la distance de Cook mais avec effet de levier acceptable (D).
 [] -   Une observation influente est observée par effet de levier, mais avec sa distance de Cook reste acceptable (D).
@@ -324,9 +333,9 @@ select_answer(r"-{
 [] -   Le *R*^2^ ajusté du modèle polynomial est meilleur que le *R*^2^ non ajusté du modèle linéaire simple. C'est un indicateur que le modèle polynomial est le meilleur.
 [] -   La valeur de *p* pour l'ANOVA du modèle est plus petite pour la régression polynomiale que pour le modèle linéaire simple. Ce résultat est en faveur du modèle polynomial.
 [] -   La valeur de *p* pour l'ANOVA du modèle est plus grande pour la régression polynomiale que pour le modèle linéaire simple. Ce résultat est en faveur du modèle polynomial.
-[] -   L'ANOVA comparant modèle linéaire simple et polynomial (modèles immbriqués) indique que le modèle le plus simple (la droite) est à préférer au seuil $\alpha$ de 5%.
-[] -   L'ANOVA comparant modèle linéaire simple et polynomial (modèles immbriqués) indique que le modèle le plus complexe (polynomial) est à préférer au seuil $\alpha$ de 5%.
-[] -   L'ANOVA comparant modèle linéaire simple et polynomial (modèles immbriqués) indique que les deux modèles ne sont pas significativement différents l'un de l'autre au seuil $\alpha$ de 5%.
+[] -   L'ANOVA comparant modèle linéaire simple et polynomial (modèles imbriqués) indique que le modèle le plus simple (la droite) est à préférer au seuil $\alpha$ de 5%.
+[] -   L'ANOVA comparant modèle linéaire simple et polynomial (modèles imbriqués) indique que le modèle le plus complexe (polynomial) est à préférer au seuil $\alpha$ de 5%.
+[] -   L'ANOVA comparant modèle linéaire simple et polynomial (modèles imbriqués) indique que les deux modèles ne sont pas significativement différents l'un de l'autre au seuil $\alpha$ de 5%.
 [] -   Les modèles ne peuvent être comparés à l'aide d'une ANOVA car ils ne sont pas imbriqués.
 [] -   Le critère d'Akaiké est plus faible pour le modèle linéaire simple qui est donc préféré au modèle polynomial.
 [] -   Le critère d'Akaiké est plus faible pour le modèle polynomial qui est donc préféré au modèle linéaire simple.

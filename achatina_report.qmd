@@ -65,7 +65,7 @@ Nous explorons ici un modèle plus simple, basé sur la régression linéaire po
 
 Les données utilisées sont les mêmes mesures réalisées sur *Achatina achatina* de la publication [@VanOsselaer2000], correspondant à leur Figure 9. Elles sont issues de l'analyse d'image d'une photographique en vue apicale de la coquille d'une achatine adulte prise de telle manière que le plan de l'image soit orthogonal à l'axe d'enroulement estimé de la coquille passant par l'apex.
 
-Les analyses sont réalisées dans `r R.version.string` et plus précisément en utilisant la [SciViews Box 2023](https://www.sciviews.org/svbox/) dans [Saturn Cloud](https://saturncloud.io). Le dialecte `SciViews::R` version `r packageVersion("SciViews")`, ainsi que les packages {stats} version `r packageVersion("stats")`, {chart} version `r packageVersion("chart")` et {tabularise} version `r packageVersion("tabularise")` sont utilisés sous `r osVersion`.
+Les analyses sont réalisées dans `r R.version.string` et plus précisément en utilisant la [SciViews Box 2025](https://www.sciviews.org/svbox/) dans [Saturn Cloud](https://saturncloud.io). Le dialecte `SciViews::R` version `r packageVersion("SciViews")`, ainsi que les packages {stats} version `r packageVersion("stats")`, {chart} version `r packageVersion("chart")` et {tabularise} version `r packageVersion("tabularise")` sont utilisés sous `r osVersion`.
 
 # Résultats
 
